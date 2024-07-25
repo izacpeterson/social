@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="corporate">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="app.js"></script>
+
+    <title>Document</title>
+  </head>
+  <body class="flex flex-col items-center justify-center">
+    <div class="flex flex-col p-8 m-8">
+      <h1>Register</h1>
+      <label class="p-4">
+        <span>Username:</span>
+        <input type="username" id="username" class="input" />
+      </label>
+      <label class="p-4">
+        <span>Password:</span>
+        <input type="password" id="password" class="input" />
+      </label>
+      <button id="registerButton" class="btn btn-primary">Register</button>
+    </div>
+  </body>
+</html>
