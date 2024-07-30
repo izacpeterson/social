@@ -11,7 +11,6 @@ router.post("/register", async (req, res) => {
   if (!doesUserExist) {
     let hashedPassword = crypt.hashPassword(password);
     db.createUser(username, hashedPassword);
-    console.log("user created");
     res.json({ success: true, reason: null });
   } else {
     res.json({ success: false, reason: "user exists" });
@@ -38,9 +37,17 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.get("/currentUser", (req, res) => {
+router.get("/currentUser", async (req, res) => {
   if (req.session.user) {
-    res.json({ success: true, user: req.session.user });
+    try {
+      let user = await db.getUserInfo(req.session.user);
+      res.json({
+        success: true,
+        user: { id: req.session.user, user: user.user },
+      });
+    } catch (error) {
+      res.json({ success: false, reason: error });
+    }
   } else {
     res.json({ success: false, reason: "no signed in user" });
   }

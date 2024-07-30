@@ -1,8 +1,8 @@
-async function registerUser() {
+async function registerUser(username, password) {
   const url = "/auth/register";
   const data = {
-    username: "izac",
-    password: "password",
+    username: username,
+    password: password,
   };
 
   const options = {
@@ -15,7 +15,12 @@ async function registerUser() {
 
   let result = await fetch(url, options);
   let reslutJson = await result.json();
-  console.log(reslutJson);
+
+  if (reslutJson.success) {
+    window.location.href = "/";
+  } else {
+    alert("ERROR: " + reslutJson.reason);
+  }
 }
 
 async function loginUser() {
@@ -35,13 +40,16 @@ async function loginUser() {
 
   let result = await fetch(url, options);
   let reslutJson = await result.json();
-  console.log(reslutJson);
+  reslutJson;
 }
 
 async function getUser() {
   let result = await fetch("/auth/currentUser");
   let reslutJson = await result.json();
-  console.log(reslutJson);
+
+  if (reslutJson.success) {
+    window.location.href = "/app";
+  }
 }
 
 async function newPost() {
@@ -60,5 +68,10 @@ async function newPost() {
 
   let result = await fetch(url, options);
   let reslutJson = await result.json();
-  console.log(reslutJson);
 }
+
+document.querySelector("#registerButton").addEventListener("click", () => {
+  registerUser(document.querySelector("#registerUsername").value, document.querySelector("#registerPassword").value);
+});
+
+getUser();

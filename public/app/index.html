@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="business">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="app.js"></script>
+  </head>
+  <body class="flex flex-col items-center">
+    <!-- <div role="tablist" class="tabs tabs-boxed m-4" id="tabs">
+      <a role="tab" class="tab" id="followingTab">Following</a>
+      <a role="tab" class="tab tab-active" id="trendingTab">Trending</a>
+    </div> -->
+    <button onclick="new_post_modal.showModal()" class="btn btn-circle btn-primary fixed bottom-10 right-10 text-4xl text-white">+</button>
+    <dialog id="new_post_modal" class="modal">
+      <div class="modal-box">
+        <form method="dialog">
+          <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+        </form>
+        <h3>New Post</h3>
+        <textarea id="newPostText" class="textarea textarea-primary w-full"></textarea>
+        <button id="newPostButton" onclick="newPost()" class="btn btn-primary">Post</button>
+      </div>
+    </dialog>
+  </body>
+</html>

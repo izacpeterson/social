@@ -22,6 +22,12 @@ const userRoutes = require("./routes/users.js");
 const authRotes = require("./routes/auth.js");
 const postRoutes = require("./routes/posts.js");
 
+//Set signed in user, for testing
+app.use((req, res, next) => {
+  req.session.user = 1;
+  next();
+});
+
 // app.use("/", indexRoutes);
 app.use("/users", userRoutes);
 app.use("/auth", authRotes);

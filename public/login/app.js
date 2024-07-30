@@ -1,5 +1,5 @@
 async function registerUser(username, password) {
-  const url = "/auth/register";
+  const url = "/auth/login";
   const data = {
     username: username,
     password: password,
@@ -15,6 +15,7 @@ async function registerUser(username, password) {
 
   let result = await fetch(url, options);
   let reslutJson = await result.json();
+  reslutJson;
 
   if (reslutJson.success) {
     window.location.href = "/";

@@ -18,4 +18,13 @@ router.post("/new", (req, res) => {
   }
 });
 
+router.get("/getFollowPosts", async (req, res) => {
+  try {
+    let posts = await db.getUserFollowedPosts(req.session.user);
+    res.json({ success: true, posts: posts });
+  } catch (error) {
+    res.json({ success: false, reason: error });
+  }
+});
+
 module.exports = router;
