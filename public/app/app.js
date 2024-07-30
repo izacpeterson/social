@@ -74,3 +74,5 @@ document.getElementById("newPostButton").addEventListener("click", () => {
 
 getFollowedPosts();
 getCurrentUser();
+
+console.log("hasdfi");
